@@ -2,8 +2,5 @@
     "name": "@wheelsonbus/abstract-music",
     "version": "0.3.0",
     "repository": "wheelsonbus/abstract-music",
-    "main": "index.js",
-    "dependencies": {
-        "uuid": "^8.3.2"
-    }
+    "main": "index.js"
 }

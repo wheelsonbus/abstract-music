@@ -1,15 +1,11 @@
-import { v4 as uuid } from "uuid";
-
 export default class Album {
-    id;
     title;
     year;
     cover;
-    artistId;
+    artist;
     tracks = [];
 
     constructor(title, year, cover, tracks) {
-        this.id = uuid();
         this.title = title;
         this.year = year;
         this.cover = cover;
@@ -17,7 +13,7 @@ export default class Album {
     }
 
     addTrack(track) {
-        track.albumId = id;
+        track.album = this;
         this.tracks.push(track);
     }
 }
