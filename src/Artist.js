@@ -5,6 +5,7 @@ export default class Artist {
     constructor(name, albums) {
         this.name = name;
         for (let album in albums) {
+            console.log(album.title);
             this.addAlbum(album);
         }
     }
