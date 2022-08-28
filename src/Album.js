@@ -9,9 +9,9 @@ export default class Album {
         this.title = title;
         this.year = year;
         this.cover = cover;
-        for (let track in tracks) {
+        tracks.forEach((track) => {
             this.addTrack(track);
-        }
+        });
     }
 
     addTrack(track) {

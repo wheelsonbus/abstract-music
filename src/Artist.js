@@ -4,14 +4,15 @@ export default class Artist {
 
     constructor(name, albums) {
         this.name = name;
-        for (let album in albums) {
-            console.log(album.title);
+        console.log(albums);
+        albums.forEach((album) => {
             this.addAlbum(album);
-        }
+        });
     }
 
     addAlbum(album) {
         album.artist = this;
         this.albums.push(album);
+        console.log(album);
     }
 }
