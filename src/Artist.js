@@ -4,7 +4,9 @@ export default class Artist {
 
     constructor(name, albums) {
         this.name = name;
-        albums.foreach((album) => this.addAlbum(album));
+        for (let album in albums) {
+            this.addAlbum(album);
+        }
     }
 
     addAlbum(album) {
