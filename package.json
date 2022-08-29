@@ -3,5 +3,8 @@
     "version": "0.6.1",
     "repository": "wheelsonbus/abstract-music",
     "main": "index.js",
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "node-fetch": "^3.2.10"
+    }
 }
