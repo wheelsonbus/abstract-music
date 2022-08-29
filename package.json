@@ -3,5 +3,8 @@
     "version": "0.8.0",
     "repository": "wheelsonbus/abstract-music",
     "main": "index.js",
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "base-64": "^1.0.0"
+    }
 }

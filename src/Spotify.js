@@ -1,3 +1,5 @@
+import base64 from "base-64";
+
 import Album from "./Album.js";
 import Artist from "./Artist.js";
 import Track from "./Track.js";
@@ -14,7 +16,8 @@ export default class Spotify {
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
                         Authorization:
-                            "Basic " + btoa(clientId + ":" + clientSecret),
+                            "Basic " +
+                            base64.encode(clientId + ":" + clientSecret),
                     },
                     body: "grant_type=client_credentials",
                 }
