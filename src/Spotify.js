@@ -28,18 +28,31 @@ export default class Spotify {
         })();
     }
 
+    async get(uri) {
+        const a = uri.split(":");
+        switch (a[1]) {
+            case "artist":
+                return await this.getArtist(a[2]);
+            case "album":
+                return await this.getAlbum(a[2]);
+            case "track":
+                return await this.getTrack(a[2]);
+            default:
+                return null;
+        }
+    }
+
     async getArtist(id) {
-        const artist = new Artist("Coldplay", []);
-        let response;
-
-        response = await fetch("https://api.spotify.com/v1/artists/" + id, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + this.token,
-            },
-        });
-
+        const response = await fetch(
+            "https://api.spotify.com/v1/artists/" + id,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + this.token,
+                },
+            }
+        );
         const data = await response.json();
 
         return new Artist(data.name, await this.getArtistAlbums(data.id));
@@ -74,6 +87,27 @@ export default class Spotify {
         return albums;
     }
 
+    async getAlbum(id) {
+        const response = await fetch(
+            "https://api.spotify.com/v1/albums/" + id,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + this.token,
+                },
+            }
+        );
+        const data = await response.json();
+
+        return new Album(
+            data.name,
+            data.release_date,
+            data.images[0].url,
+            await this.getAlbumTracks(data.id)
+        );
+    }
+
     async getAlbumTracks(id) {
         const response = await fetch(
             "https://api.spotify.com/v1/albums/" + id + "/tracks?limit=50",
@@ -92,5 +126,21 @@ export default class Spotify {
             tracks.push(new Track(track.name));
         });
         return tracks;
+    }
+
+    async getTrack(id) {
+        const response = await fetch(
+            "https://api.spotify.com/v1/tracks/" + id,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + this.token,
+                },
+            }
+        );
+        const data = await response.json();
+
+        return new Track(data.name);
     }
 }
