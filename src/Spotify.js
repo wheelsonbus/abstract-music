@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 import Album from "./Album.js";
 import Artist from "./Artist.js";
 import Track from "./Track.js";
