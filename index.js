@@ -1,4 +1,3 @@
-import Collection from "./src/Collection.js";
 import Artist from "./src/Artist.js";
 import Album from "./src/Album.js";
 import Track from "./src/Track.js";

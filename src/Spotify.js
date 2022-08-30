@@ -1,5 +1,4 @@
 import base64 from "base-64";
-import fetch from "node-fetch";
 
 import Album from "./Album.js";
 import Artist from "./Artist.js";
