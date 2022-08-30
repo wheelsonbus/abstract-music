@@ -1,21 +1,26 @@
 export default class Album {
+    id;
     title;
-    year;
+    date;
     cover;
     artist;
     tracks = [];
 
-    constructor(title, year, cover, tracks) {
-        this.title = title;
-        this.year = year;
-        this.cover = cover;
-        tracks.forEach((track) => {
-            this.addTrack(track);
-        });
-    }
+    constructor(title, date, cover, tracks, id = null, artist = null) {
+        this.id = id;
+        this.artist = artist;
 
-    addTrack(track) {
-        track.album = this;
-        this.tracks.push(track);
+        this.title = title;
+        this.date = date;
+        this.cover = cover;
+
+        if (id == null) {
+            tracks.forEach((track) => {
+                track.album = this;
+                this.tracks.push(track);
+            });
+        } else {
+            this.tracks = tracks;
+        }
     }
 }
