@@ -5,7 +5,6 @@ export default class Album {
     tracks = [];
 
     constructor(title, date, cover, tracks) {
-        this.artist = artist;
         this.title = title;
         this.date = date;
         this.cover = cover;
