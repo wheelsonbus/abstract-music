@@ -51,31 +51,26 @@ export default class Discogs {
         const data = (await response.json()).releases;
         let albums = [];
         for (const album of data) {
-            albums.push(
-                this.getAlbum(album.id);
-            );
+            albums.push(this.getAlbum(album.id));
         }
         return albums;
     }
 
     async getAlbum(id) {
-        const response = await fetch(
-            "https://api.discogs.com/releases/" + id,
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization:
-                        "Discogs key=" +
-                        this.consumerKey +
-                        " secret=" +
-                        this.consumerSecret,
-                },
-            }
-        );
+        const response = await fetch("https://api.discogs.com/releases/" + id, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization:
+                    "Discogs key=" +
+                    this.consumerKey +
+                    " secret=" +
+                    this.consumerSecret,
+            },
+        });
         const data = await response.json();
 
-        let tracks = []
+        let tracks = [];
         for (track of data.tracklist) {
             tracks.push(new Track(track.title));
         }
