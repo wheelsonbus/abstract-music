@@ -55,7 +55,11 @@ export default class Spotify {
         );
         const data = await response.json();
 
-        return new Artist(data.name, await this.getArtistAlbums(data.id));
+        return new Artist(
+            data.name,
+            data.images[0].url,
+            await this.getArtistAlbums(data.id)
+        );
     }
 
     async getArtistAlbums(id) {
