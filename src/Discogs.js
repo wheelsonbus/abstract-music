@@ -24,6 +24,7 @@ export default class Discogs {
             },
         });
         const data = await response.json();
+        console.log(data);
 
         return new Artist(
             data.name,
@@ -49,6 +50,8 @@ export default class Discogs {
         );
 
         const data = (await response.json()).releases;
+        console.log(data);
+
         let albums = [];
         for (const album of data) {
             albums.push(this.getAlbum(album.id));
