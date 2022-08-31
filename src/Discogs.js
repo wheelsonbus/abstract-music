@@ -27,7 +27,7 @@ export default class Discogs {
 
         return new Artist(
             data.name,
-            data.images[0].url,
+            data.images[0].uri,
             await this.getArtistAlbums(data.id)
         );
     }
