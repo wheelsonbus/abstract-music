@@ -1,6 +1,6 @@
 {
     "name": "@wheelsonbus/abstract-music",
-    "version": "0.11.2",
+    "version": "0.12.0",
     "repository": "wheelsonbus/abstract-music",
     "main": "index.js",
     "type": "module",
