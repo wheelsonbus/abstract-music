@@ -12,6 +12,7 @@ export default class Discogs {
     }
 
     async getArtist(id) {
+        console.log("HI!");
         const response = await fetch("https://api.discogs.com/artists/" + id, {
             method: "GET",
             headers: {
