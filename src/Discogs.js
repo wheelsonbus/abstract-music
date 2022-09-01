@@ -25,11 +25,7 @@ export default class Discogs {
         });
         const data = await response.json();
 
-        return new Artist(
-            data.name,
-            data.images[0].uri,
-            await this.getArtistReleases(data.id)
-        );
+        return new Artist(data.name, await this.getArtistReleases(data.id));
     }
 
     async getArtistReleases(id) {
