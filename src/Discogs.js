@@ -45,20 +45,26 @@ export default class Discogs {
         );
 
         const data = (await response.json()).releases;
+        //console.log(JSON.stringify(data, null, 2));
 
         let releases = [];
         for (const release of data) {
-            if (release.type !== "master" || release.role !== "Main") {
+            if (release.role !== "Main") {
                 continue;
             }
-            releases.push(
-                await this.getReleases(release.main_release.toString())
-            );
+            let id = "";
+            if (release.type === "master") {
+                id = release.main_release.toString();
+            } else {
+                id = release.id;
+            }
+
+            releases.push(await this.getRelease(id));
         }
         return releases;
     }
 
-    async getReleases(id) {
+    async getRelease(id) {
         const response = await fetch("https://api.discogs.com/releases/" + id, {
             method: "GET",
             headers: {
