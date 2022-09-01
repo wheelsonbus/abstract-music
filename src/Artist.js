@@ -1,11 +1,11 @@
 export default class Artist {
     name;
     image;
-    albums = [];
+    releases = [];
 
-    constructor(name, image, albums) {
+    constructor(name, image, releases) {
         this.name = name;
         this.image = image;
-        this.albums = albums;
+        this.releases = releases;
     }
 }
