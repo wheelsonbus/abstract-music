@@ -71,6 +71,7 @@ export default class Discogs {
             },
         });
         const data = await response.json();
+        console.log("Got " + data.title);
 
         let tracks = [];
         for (const track of data.tracklist) {
