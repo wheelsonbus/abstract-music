@@ -1,7 +1,9 @@
 export default class Track {
     title;
+    duration;
 
-    constructor(title) {
+    constructor(title, duration) {
         this.title = title;
+        this.duration = duration;
     }
 }
