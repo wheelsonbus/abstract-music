@@ -2,8 +2,6 @@ import Release from "./Release.js";
 import Artist from "./Artist.js";
 import Track from "./Track.js";
 
-import fetch from "node-fetch";
-
 export default class Discogs {
     consumerKey;
     consumerSecret;
@@ -26,7 +24,6 @@ export default class Discogs {
             },
         });
         if (response.headers.get("x-discogs-ratelimit-remaining") === "1") {
-            console.log("Throttling API requests for 60 seconds");
             await new Promise((r) => setTimeout(r, 60 * 1000));
         }
         return response;
@@ -39,6 +36,7 @@ export default class Discogs {
         const data = await response.json();
 
         return new Artist(data.name, await this.getArtistReleases(data.id));
+        console.log("Fetched " + data.name);
     }
 
     async getArtistReleases(id) {
@@ -73,17 +71,6 @@ export default class Discogs {
         );
 
         const data = await response.json();
-        if (data.title == null) {
-            console.log(data);
-        }
-        console.log(
-            "Got " +
-                data.title +
-                " (" +
-                data.year +
-                ") cover@" +
-                (data.images ? "Discogs" : "?")
-        );
 
         let tracks = [];
         for (const track of data.tracklist) {
